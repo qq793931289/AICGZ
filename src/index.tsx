@@ -17,11 +17,35 @@
 // serviceWorker.unregister();
 
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Router from './router/router';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// // import Router from './router/router';
+// import { BrowserRouter as Router } from 'react-router-dom';
+// import App from './components/App/App';
 
-ReactDOM.render(
-  <Router />,
-  document.getElementById('root')
-);
+// renderWithHotReload(App);
+
+// if ((module as any).hot) {
+//   (module as any).hot.accept('components/App/App', () => {
+//     const NextApp = require('components/App/App').default;
+//     renderWithHotReload(NextApp);
+//   });
+// }
+
+// function renderWithHotReload(RootElement: React.Component | any) {
+//   ReactDOM.render(
+//     <Router>
+//       <RootElement />
+//     </Router >,
+//     document.getElementById('root')
+//   );
+// }
+
+
+import React from 'react';
+import ReactDom from 'react-dom';
+
+import getRouter from './router/router';
+
+ReactDom.render(
+  getRouter(), document.getElementById('root'));

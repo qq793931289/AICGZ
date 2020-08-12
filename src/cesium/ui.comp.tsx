@@ -7,6 +7,7 @@ import * as THREE from 'three';
 
 // @import url(./templates/bucket.css);
 import 'cesium/Source/Widgets/widgets.css';
+import { Link } from 'react-router-dom';
 (Cesium as any).buildModuleUrl.setBaseUrl('https://cesium.com/downloads/cesiumjs/releases/1.70.1/Build/Cesium/Source');
 // (window as any).CESIUM_BASE_URL = "https://cesium.com/downloads/cesiumjs/releases/1.71.0/Build/Cesium/Source";
 
@@ -51,6 +52,10 @@ export default class CesiumContainer extends React.Component {
     return (
       <div id='cesiumContainer'>
         {/* 浏览器不兼容! */}
+        {/* <Link to="/Home" style={{ color: 'black' }}></Link> */}
+        {/* <Link to="/detail" style={{ color: 'black' }}></Link> */}
+        <a href='#/Home'>回到home</a>
+        <a href='#/detail'>回到detail</a>
       </div>
     )
   }
