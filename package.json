@@ -25,18 +25,23 @@
     "babel-preset-stage-0": "^6.24.1",
     "bundle-loader": "^0.5.6",
     "cra-template-typescript": "1.0.3",
+    "fast-css-loader": "^1.0.2",
+    "fast-scss-loader": "^1.0.0",
+    "file-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.10.0",
     "node-sass": "^4.14.1",
-    "react-hot-loader": "^4.12.21",
+    "react-hot-loader": "^4.5.3",
     "source-map-explorer": "^2.4.2",
     "ts-loader": "^8.0.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "url-loader": "^4.1.0"
   },
   "scripts": {
-    "start-color": "webpack-dev-server --config webpack.dev.config.js --color --progress",
+    "start-color": "webpack-dev-server --config webpack.dev.config.js --color --progress --hot",
     "server-start": "webpack-dev-server --config webpack.dev.config.js",
     "dev-build": "webpack --config webpack.dev.config.js",
     "analyze": "source-map-explorer build/static/js/main.*",
-    "start": "react-scripts start  ",
+    "start": "react-scripts start    --hot",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -42,10 +42,44 @@
 // }
 
 
+// import React from 'react';
+// import ReactDom from 'react-dom';
+
+// import getRouter from './router/router';
+
+// if ((module as any).hot) {
+//   (module as any).hot.accept();
+// }
+
+// ReactDom.render(
+//   getRouter(), document.getElementById('root'));
+
+
+
 import React from 'react';
 import ReactDom from 'react-dom';
+// import React from 'react';
+// import ReactDom from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 
 import getRouter from './router/router';
 
-ReactDom.render(
-  getRouter(), document.getElementById('root'));
+/*初始化*/
+renderWithHotReload(getRouter());
+
+/*热更新*/
+if ((module as any).hot) {
+  (module as any).hot.accept('./router/router', () => {
+    const getRouter = require('./router/router').default;
+    renderWithHotReload(getRouter());
+  });
+}
+
+function renderWithHotReload(RootElement: any) {
+  ReactDom.render(
+    <AppContainer>
+      {RootElement}
+    </AppContainer>,
+    document.getElementById('root')
+  )
+}
