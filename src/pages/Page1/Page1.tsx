@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-// import './Page1.scss';
+import './page1.scss';
 
-// import image from './images/brickpsert.jpg';
+import image from './images/brickpsert.jpg';
 // const url = './images/brickpsert.jpg';
 
 export default class Page1 extends Component {
@@ -15,8 +15,8 @@ export default class Page1 extends Component {
     return (
       <div>
         this is Page1~
-        {/* <img src={image} /> */}
-        <img src='https://www.v-edu.net.cn/static/background.819f332c.jpg' />
+        <img src={image} alt='' />
+        <img src='https://www.v-edu.net.cn/static/background.819f332c.jpg' alt='' />
         {/* <img src={url} /> */}
       </div>
     )

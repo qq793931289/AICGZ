@@ -64,6 +64,11 @@ import { AppContainer } from 'react-hot-loader';
 
 import getRouter from './router/router';
 
+import { setConfig } from 'react-hot-loader';
+setConfig({
+  showReactDomPatchNotification: false
+})
+
 /*初始化*/
 renderWithHotReload(getRouter());
 

@@ -10,13 +10,13 @@ module.exports = {
     'react-hot-loader/patch',
     path.join(__dirname, 'src/index.tsx')
   ],
-  resolve:
-  {
+  resolve: {
     extensions: ['.ts', '.js', '.jsx', '.tsx'],
     alias: {
       // pages: path.join(__dirname, 'src/pages'),
       // component: path.join(__dirname, 'src/component'),
-      // router: path.join(__dirname, 'src/router')
+      // router: path.join(__dirname, 'src/router'),
+      'react-dom': '@hot-loader/react-dom',
     }
   },
 
@@ -30,14 +30,11 @@ module.exports = {
   /*src文件夹下面的以.js结尾的文件，要使用babel解析*/
   /*cacheDirectory是用来缓存编译结果，下次编译加速*/
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'ts-loader'
-          }
-        ],
+        use: [{
+          loader: 'ts-loader'
+        }],
       },
       {
         test: /\.(scss|css)$/,

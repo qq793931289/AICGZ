@@ -68,12 +68,12 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // import Counter from 'bundle-loader?lazy&name=counter!pages/Counter/Counter';
 // import UserInfo from 'bundle-loader?lazy&name=userInfo!pages/UserInfo/UserInfo';
 
-import Home from '../pages/Home/Home';
-import Page1 from '../pages/Page1/Page1';
+import Home from '../pages/home/home';
+import Page1 from '../pages/page1/page1';
 
-const Loading = function () {
-  return <div>Loading...</div>
-};
+// const Loading = function () {
+//   return <div>Loading...</div>
+// };
 
 // const createComponent = (component: any) => (props: any) => (
 //   <Bundle load={component}>

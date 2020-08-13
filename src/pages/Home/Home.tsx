@@ -38,7 +38,6 @@ export default class Home extends React.Component {
     count: 0
   }
 
-
   constructor(props: any) {
     super(props);
     console.log(this.state);
