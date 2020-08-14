@@ -16,7 +16,7 @@ export default class Page1 extends Component {
       <div>
         this is Page1~
         <img src={image} alt='' />
-        <img src='https://www.v-edu.net.cn/static/background.819f332c.jpg' alt='' />
+        {/* <img src='https://www.v-edu.net.cn/static/background.819f332c.jpg' alt='' /> */}
         {/* <img src={url} /> */}
       </div>
     )

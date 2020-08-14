@@ -87,26 +87,41 @@ import Menu from '../pages/menu/navigation';
 //   </Bundle>
 // );
 
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
+import './index.scss';
+import { Row, Col } from 'antd';
+import BaseLayout from '../pages/layout';
+
+
 const getRouter = () => (
   <Router>
-    <div>
-      {/* <ul>
-        <li><Link to="/">首页</Link></li>
-        <li><Link to="/page1">Page1</Link></li>
-        <li><Link to="/menu">menu</Link></li> 
-      </ul> */}
-      <Menu />
-      <Switch>
-        {/* <Route exact path="/" component={createComponent(Home)} />
-        <Route path="/page1" component={createComponent(Page1)} /> */}
-        <Route exact path="/" component={Home} />
-        <Route path="/page1" component={Page1} />
-        <Route path="/menu" component={Menu} />
-        {/* <Route path="/counter" component={createComponent(Counter)} />
-        <Route path="/userinfo" component={createComponent(UserInfo)} /> */}
-      </Switch>
-    </div>
+    <BaseLayout />
+    {/* <>
+      <>
+        <Row>
+          <Col flex="256px">
+            <Menu />
+          </Col>
+          <Col flex="auto">
+            <Switch>
+
+              <Route exact path="/" component={Home} />
+              <Route path="/page1" component={Page1} />
+              <Route path="/menu" component={Menu} />
+
+            </Switch>
+          </Col>
+        </Row>
+      </>
+    </> */}
   </Router>
 );
 
 export default getRouter;
+{/* <Route exact path="/" component={createComponent(Home)} />
+              <Route path="/page1" component={createComponent(Page1)} /> */}
+{/* <Route path="/counter" component={createComponent(Counter)} />
+              <Route path="/userinfo" component={createComponent(UserInfo)} /> */}

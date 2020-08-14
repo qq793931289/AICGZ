@@ -50,10 +50,10 @@ export default class Sider extends React.Component {
           style={{ width: 256 }}
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
-          mode={'inline'}
-          theme={'dark'}
-        // mode={this.state.mode}
-        // theme={this.state.theme}
+          // mode={'inline'}
+          // theme={'dark'}
+          mode={`${this.state.mode}` as any}
+          theme={`${this.state.theme}` as any}
         >
           <Menu.Item key="1" icon={<MailOutlined />}>
             Navigation One
@@ -62,8 +62,8 @@ export default class Sider extends React.Component {
             Navigation Two
           </Menu.Item>
           <SubMenu key="sub1" icon={<AppstoreOutlined />} title="Navigation Two">
-            <Menu.Item key="3">Option 3</Menu.Item>
-            <Menu.Item key="4">Option 4</Menu.Item>
+            <Menu.Item key="3"><Link to="/page1">Page1</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/menu">menu</Link></Menu.Item>
             <SubMenu key="sub1-2" title="Submenu">
               <Menu.Item key="5">Option 5</Menu.Item>
               <Menu.Item key="6">Option 6</Menu.Item>
@@ -71,12 +71,12 @@ export default class Sider extends React.Component {
           </SubMenu>
           <SubMenu key="sub2" icon={<SettingOutlined />} title="Navigation Three">
             <Menu.Item key="7"><Link to="/page1">Page1</Link></Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
+            <Menu.Item key="8"><Link to="/">home</Link></Menu.Item>
             <Menu.Item key="9">Option 9</Menu.Item>
             <Menu.Item key="10">Option 10</Menu.Item>
           </SubMenu>
           <Menu.Item key="link" icon={<LinkOutlined />}>
-            <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+            <a href=" " target="_blank" rel="noopener noreferrer">
               Ant Design
             </a>
           </Menu.Item>
