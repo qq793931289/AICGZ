@@ -59,7 +59,10 @@
 
 import React from 'react';
 
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Switch,
+  // Link
+} from 'react-router-dom';
 
 // import Bundle from './Bundle';
 
@@ -70,6 +73,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import Home from '../pages/home/home';
 import Page1 from '../pages/page1/page1';
+import Menu from '../pages/menu/navigation';
 
 // const Loading = function () {
 //   return <div>Loading...</div>
@@ -86,17 +90,18 @@ import Page1 from '../pages/page1/page1';
 const getRouter = () => (
   <Router>
     <div>
-      <ul>
+      {/* <ul>
         <li><Link to="/">首页</Link></li>
         <li><Link to="/page1">Page1</Link></li>
-        {/* <li><Link to="/counter">Counter</Link></li>
-        <li><Link to="/userinfo">UserInfo</Link></li> */}
-      </ul>
+        <li><Link to="/menu">menu</Link></li> 
+      </ul> */}
+      <Menu />
       <Switch>
         {/* <Route exact path="/" component={createComponent(Home)} />
         <Route path="/page1" component={createComponent(Page1)} /> */}
         <Route exact path="/" component={Home} />
         <Route path="/page1" component={Page1} />
+        <Route path="/menu" component={Menu} />
         {/* <Route path="/counter" component={createComponent(Counter)} />
         <Route path="/userinfo" component={createComponent(UserInfo)} /> */}
       </Switch>
