@@ -1,6 +1,14 @@
 import React from 'react';
+import {
+  BrowserRouter as Router, Route, Switch,
+  // Link
+} from 'react-router-dom';
+import Home from '../home/home';
+import Page1 from '../page1/page1';
+import Iframe from './main/iframe/index';
+import MenuM from '../components/ui/menu/index';
 // import 'antd/dist/antd.scss';
-// import './index.scss';
+import './index.scss';
 // import style from './index.scss';
 import { Layout, Menu } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
@@ -16,7 +24,7 @@ export default class BaseLayout extends React.Component {
 
   render() {
     return (
-      <Layout>
+      <Layout className='layout'>
 
         <Sider
           breakpoint="lg"
@@ -27,34 +35,40 @@ export default class BaseLayout extends React.Component {
           onCollapse={(collapsed, type) => {
             console.log(collapsed, type);
           }}
+          width={256}
+          theme='light'
         >
 
-          <div className="logo" />
+          {/* <div className="logo" /> */}
 
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-            <Menu.Item key="1" icon={<UserOutlined />}>
-              nav 1
-        </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-              nav 2
-        </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
-              nav 3
-        </Menu.Item>
-            <Menu.Item key="4" icon={<UserOutlined />}>
-              nav 4
-        </Menu.Item>
-          </Menu>
+          {/* <BaseLayout /> */}
+
+          <MenuM />
+
         </Sider>
-        <Layout>
-          <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
-          <Content style={{ margin: '24px 16px 0' }}>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              content
-        </div>
+
+        <Layout >
+
+          {/* <Header className="site-layout-sub-header-background" style={{ padding: 0 }} /> */}
+
+          <Content className='content' style={{ margin: '0px 0px 0' }}>
+            <div className="site-layout-background" style={{ padding: 0, minHeight: 360, height: '100%' }}>
+              {/* content */}
+              <Switch >
+
+                <Route exact path="/" component={Home} />
+                <Route path="/page1" component={Page1} />
+                <Route path="/menu" component={MenuM} />
+                <Route path="/iframe" component={Iframe} />
+
+              </Switch>
+            </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+
+          {/* <Footer style={{ textAlign: 'center' }}>ICP</Footer> */}
+
         </Layout>
+
       </Layout>
     )
   };
