@@ -26,23 +26,23 @@ export default class Sider extends React.Component {
 
   }
 
-  changeMode = (value: boolean) => {
+  public changeMode = (value: boolean) => {
     this.setState({
       mode: value ? 'vertical' : 'inline',
     });
-  };
+  }
 
-  changeTheme = (value: boolean) => {
+  public changeTheme = (value: boolean) => {
     this.setState({
       theme: value ? 'dark' : 'light',
     });
-  };
+  }
 
-  render() {
+  public render() {
     return (
       <div>
         <Switch onChange={this.changeMode} /> Change Mode
-        <Divider type="vertical" />
+        <Divider type='vertical' />
         <Switch defaultChecked onChange={this.changeTheme} /> Change Style
         <br />
         <br />
@@ -56,31 +56,31 @@ export default class Sider extends React.Component {
           theme={`${this.state.theme}` as any}
         >
 
-          <Menu.Item key="1" icon={<MailOutlined />}>
+          <Menu.Item key='1' icon={<MailOutlined />}>
             Navigation One
           </Menu.Item>
 
-          <Menu.Item key="2" icon={<CalendarOutlined />}>
+          <Menu.Item key='2' icon={<CalendarOutlined />}>
             Navigation Two
           </Menu.Item>
 
-          <SubMenu key="sub1" icon={<AppstoreOutlined />} title="Navigation Two">
-            <Menu.Item key="3"><Link to="/page1">Page1</Link></Menu.Item>
-            <Menu.Item key="4"><Link to="/menu">menu</Link></Menu.Item>
-            <SubMenu key="sub1-2" title="Submenu">
-              <Menu.Item key="5">Option 5</Menu.Item>
-              <Menu.Item key="6">Option 6</Menu.Item>
+          <SubMenu key='sub1' icon={<AppstoreOutlined />} title='Navigation Two'>
+            <Menu.Item key='3'><Link to='/page1'>Page1</Link></Menu.Item>
+            <Menu.Item key='4'><Link to='/menu'>menu</Link></Menu.Item>
+            <SubMenu key='sub1-2' title='Submenu'>
+              <Menu.Item key='5'>Option 5</Menu.Item>
+              <Menu.Item key='6'>Option 6</Menu.Item>
             </SubMenu>
           </SubMenu>
 
-          <SubMenu key="sub2" icon={<SettingOutlined />} title="Navigation Three">
-            <Menu.Item key="7"><Link to="/page1">Page1</Link></Menu.Item>
-            <Menu.Item key="8"><Link to="/">home</Link></Menu.Item>
-            <Menu.Item key="9">Option 9</Menu.Item>
-            <Menu.Item key="10">Option 10</Menu.Item>
+          <SubMenu key='sub2' icon={<SettingOutlined />} title='Navigation Three'>
+            <Menu.Item key='7'><Link to='/page1'>Page1</Link></Menu.Item>
+            <Menu.Item key='8'><Link to='/'>home</Link></Menu.Item>
+            <Menu.Item key='9'>Option 9</Menu.Item>
+            <Menu.Item key='10'>Option 10</Menu.Item>
           </SubMenu>
-          <Menu.Item key="link" icon={<LinkOutlined />}>
-            <a href=" " target="_blank" rel="noopener noreferrer">
+          <Menu.Item key='link' icon={<LinkOutlined />}>
+            <a href=' ' target='_blank' rel='noopener noreferrer'>
               Ant Design
             </a>
           </Menu.Item>

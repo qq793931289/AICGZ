@@ -34,36 +34,28 @@ export class ICard extends React.Component<ICardProps> {
     }
   }
 
-  render() {
+  public render() {
     return (
       <Card
         hoverable
         style={{ width: 512 }}
         cover={
-          // <Iframe url={'http://www.baidu.com'} />
-
           this._isHref ?
             <a href={this._link} target='iframename'>
-              <img alt="example" src={this._imgUrl} style={{ width: 512 }} />
+              <img alt='example' src={this._imgUrl} style={{ width: 512 }} />
             </a>
             :
             <Link to={this._link}>
-              <img alt="example" src={this._imgUrl} style={{ width: 512 }} />
+              <img alt='example' src={this._imgUrl} style={{ width: 512 }} />
             </Link>
-
         }
         onClick={
-
           () => {
             console.log(this._link);
           }
         }
       >
-
-
-
         <Meta title={this._title} description={this._description} />
-
       </Card >
     );
   }

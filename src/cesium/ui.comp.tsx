@@ -9,7 +9,7 @@ import * as THREE from 'three';
 import 'cesium/Source/Widgets/widgets.css';
 import { Link } from 'react-router-dom';
 (Cesium as any).buildModuleUrl.setBaseUrl('https://cesium.com/downloads/cesiumjs/releases/1.70.1/Build/Cesium/Source');
-// (window as any).CESIUM_BASE_URL = "https://cesium.com/downloads/cesiumjs/releases/1.71.0/Build/Cesium/Source";
+// (window as any).CESIUM_BASE_URL = 'https://cesium.com/downloads/cesiumjs/releases/1.71.0/Build/Cesium/Source';
 
 
 
@@ -23,11 +23,11 @@ export default class CesiumContainer extends React.Component {
   //   super(props);
   // }
 
-  componentDidMount() {
+  public componentDidMount() {
     console.log(Cesium, THREE);
     // console.log(this.props.match.params);
     // console.log(this.props.history.location.state);
-    const viewer = new Cesium.Viewer("cesiumContainer", {
+    const viewer = new Cesium.Viewer('cesiumContainer', {
       imageryProvider: false as any,
       // animation: false,  //是否显示动画控件
       // baseLayerPicker: false, //是否显示图层选择控件
@@ -37,27 +37,27 @@ export default class CesiumContainer extends React.Component {
       // navigationHelpButton: false, //是否显示帮助信息控件
       // infoBox: true,  //是否显示点击要素之后显示的信息
       // imageryProvider : new Cesium.WebMapTileServiceImageryProvider({
-      //     url: "http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles",
-      //     layer: "tdtVecBasicLayer",
-      //     style: "default",
-      //     format: "image/jpeg",
-      //     tileMatrixSetID: "GoogleMapsCompatible",
+      //     url: 'http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles',
+      //     layer: 'tdtVecBasicLayer',
+      //     style: 'default',
+      //     format: 'image/jpeg',
+      //     tileMatrixSetID: 'GoogleMapsCompatible',
       //     show: false
       // })
     });
   }
 
 
-  render() {
+  public render() {
     return (
       <div id='cesiumContainer'>
         {/* 浏览器不兼容! */}
-        {/* <Link to="/Home" style={{ color: 'black' }}></Link> */}
-        {/* <Link to="/detail" style={{ color: 'black' }}></Link> */}
+        {/* <Link to='/Home' style={{ color: 'black' }}></Link> */}
+        {/* <Link to='/detail' style={{ color: 'black' }}></Link> */}
         <a href='#/Home'>回到home</a>
         <a href='#/detail'>回到detail</a>
       </div>
-    )
+    );
   }
 
 }

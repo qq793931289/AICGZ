@@ -22,10 +22,10 @@
 // export default () => (
 //   <div>
 //     <Switch>
-//       <Route exact path="/" component={createComponent(Home)} />
-//       <Route path="/page1" component={createComponent(Page1)} />
-//       <Route path="/counter" component={createComponent(Counter)} />
-//       <Route path="/userinfo" component={createComponent(UserInfo)} />
+//       <Route exact path='/' component={createComponent(Home)} />
+//       <Route path='/page1' component={createComponent(Page1)} />
+//       <Route path='/counter' component={createComponent(Counter)} />
+//       <Route path='/userinfo' component={createComponent(UserInfo)} />
 //       <Route component={createComponent(NotFound)} />
 //     </Switch>
 //   </div>
@@ -43,12 +43,12 @@
 //   <Router>
 //     <div>
 //       <ul>
-//         <li><Link to="/">首页</Link></li>
-//         <li><Link to="/page1">Page1</Link></li>
+//         <li><Link to='/'>首页</Link></li>
+//         <li><Link to='/page1'>Page1</Link></li>
 //       </ul>
 //       <Switch>
-//         <Route exact path="/" component={Home} />
-//         <Route path="/page1" component={Page1} />
+//         <Route exact path='/' component={Home} />
+//         <Route path='/page1' component={Page1} />
 //       </Switch>
 //     </div>
 //   </Router>
@@ -102,15 +102,15 @@ const getRouter = () => (
     {/* <>
       <>
         <Row>
-          <Col flex="256px">
+          <Col flex='256px'>
             <Menu />
           </Col>
-          <Col flex="auto">
+          <Col flex='auto'>
             <Switch>
 
-              <Route exact path="/" component={Home} />
-              <Route path="/page1" component={Page1} />
-              <Route path="/menu" component={Menu} />
+              <Route exact path='/' component={Home} />
+              <Route path='/page1' component={Page1} />
+              <Route path='/menu' component={Menu} />
 
             </Switch>
           </Col>
@@ -121,7 +121,7 @@ const getRouter = () => (
 );
 
 export default getRouter;
-{/* <Route exact path="/" component={createComponent(Home)} />
-              <Route path="/page1" component={createComponent(Page1)} /> */}
-{/* <Route path="/counter" component={createComponent(Counter)} />
-              <Route path="/userinfo" component={createComponent(UserInfo)} /> */}
+{/* <Route exact path='/' component={createComponent(Home)} />
+              <Route path='/page1' component={createComponent(Page1)} /> */}
+{/* <Route path='/counter' component={createComponent(Counter)} />
+              <Route path='/userinfo' component={createComponent(UserInfo)} /> */}

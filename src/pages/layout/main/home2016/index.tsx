@@ -3,7 +3,7 @@ import { Card } from 'antd';
 // import 'antd/dist/antd.scss';
 
 // import Iframe from '../../../components/ui/iframe';
-import { ICard, ICardProps } from './card';
+import { ICard, ICardProps } from '../../../components/ui/card';
 import { Row, Col, Divider } from 'antd';
 const style = { background: '#0092ff', padding: '8px 0' };
 
@@ -21,8 +21,6 @@ const DemoCard = (props: any) =>
       />
     </DemoBox>
   </Col >;
-
-
 
 export class Home2016 extends React.Component {
 

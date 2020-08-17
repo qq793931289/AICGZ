@@ -55,41 +55,42 @@ import './index.scss';
 //   getRouter(), document.getElementById('root'));
 
 
-
 import React from 'react';
 import ReactDom from 'react-dom';
 // import React from 'react';
 // import ReactDom from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+// import { AppContainer, setConfig } from 'react-hot-loader';
 
 import getRouter from './router/router';
 
-import { setConfig } from 'react-hot-loader';
-setConfig({
-  showReactDomPatchNotification: false
-})
+// setConfig({
+//   showReactDomPatchNotification: false,
+// });
 
 /*初始化*/
-renderWithHotReload(getRouter());
+// renderWithHotReload(getRouter());
 
 /*热更新*/
-if ((module as any).hot) {
-  (module as any).hot.accept('./router/router', () => {
-    const getRouter = require('./router/router').default;
-    renderWithHotReload(getRouter());
-  });
-}
+// if ((module as any).hot) {
+//   (module as any).hot.accept('./router/router', () => {
+//     // const getRouter = require('./router/router').default;
+//     // renderWithHotReload(getRouter());
+//   });
+// }
 
-function renderWithHotReload(RootElement: any) {
-  ReactDom.render(
-    <AppContainer>
-      {RootElement}
-    </AppContainer>,
-    document.getElementById('root')
-  )
-}
+// function renderWithHotReload(RootElement: any) {
+//   ReactDom.render(
+//     <AppContainer>
+//       {RootElement}
+//     </AppContainer>,
+//     document.getElementById('root'));
+// }
+
+ReactDom.render(
+  getRouter(),
+  document.getElementById('root'));
 
 document.oncontextmenu = function () { return false; };
 document.onselectstart = function () { return false; };
 
-export default renderWithHotReload;
+// export default renderWithHotReload;

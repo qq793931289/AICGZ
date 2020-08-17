@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, Route, Switch,
   // Link
 } from 'react-router-dom';
-import { Row, Col, Divider } from 'antd';
+import { Row, Col, Divider,Layout, Menu  } from 'antd';
 import Home from './main/home2020/ui.comp';
 import Page1 from '../page1/page1';
 import { Home2016 } from './main/home2016/index';
@@ -11,7 +11,6 @@ import MenuM from '../components/ui/menu/index';
 // import 'antd/dist/antd.scss';
 import './index.scss';
 // import style from './index.scss';
-import { Layout, Menu } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { IframeHome2016, IframeHome2016VR, IframeHome2016Tiyanqu, IframeHome2016Zhanshiqu } from './main/home2016/iframe';
 import { IContact } from './main/contact/ui.comp';
@@ -27,10 +26,10 @@ const DemoBox = (props: any) => <p className={`height-${props.value}`}>{props.ch
 
 class Default extends React.Component {
 
-  render() {
+  public render() {
     return (
       <div>Default</div>
-    )
+    );
   }
 
 }
@@ -42,13 +41,13 @@ export default class BaseLayout extends React.Component {
 
   // }
 
-  render() {
+  public render() {
     return (
       <Layout className='layout'>
 
         <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
+          breakpoint='lg'
+          collapsedWidth='0'
           onBreakpoint={broken => {
             console.log(broken);
           }}
@@ -59,7 +58,7 @@ export default class BaseLayout extends React.Component {
           theme='light'
         >
 
-          {/* <div className="logo" /> */}
+          {/* <div className='logo' /> */}
 
           {/* <BaseLayout /> */}
 
@@ -69,9 +68,9 @@ export default class BaseLayout extends React.Component {
 
         <Layout >
 
-          <Header className="site-layout-sub-header-background" style={{ padding: 0, background: '#f0f2f5' }}>
+          <Header className='site-layout-sub-header-background' style={{ padding: 0, background: '#f0f2f5' }}>
 
-            <Row justify="space-around" align="middle">
+            <Row justify='space-around' align='middle'>
 
               <Col span={8}>
                 <DemoBox value={50}>
@@ -83,25 +82,25 @@ export default class BaseLayout extends React.Component {
           </Header>
 
           <Content className='content' style={{ margin: '0px 0px 0' }}>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360, height: '100%' }}>
+            <div className='site-layout-background' style={{ padding: 24, minHeight: 360, height: '100%' }}>
               {/* content */}
               <Switch >
 
-                {/* <Route exact path="/" component={IframeHome2016} /> */}
-                <Route path="/iframehome2016" component={IframeHome2016} />
+                {/* <Route exact path='/' component={IframeHome2016} /> */}
+                <Route path='/iframehome2016' component={IframeHome2016} />
 
-                <Route exact path="/" component={Home2016} />
-                <Route path="/home2016" component={Home2016} />
+                {/* <Route exact path='/' component={Home2016} /> */}
+                <Route path='/home2016' component={Home2016} />
 
-                <Route path="/home" component={Home} />
-                <Route path="/page1" component={Page1} />
-                <Route path="/menu" component={MenuM} />
-                <Route path="/contact" component={IContact} />
+                <Route path='/home' component={Home} />
+                <Route path='/page1' component={Page1} />
+                <Route path='/menu' component={MenuM} />
+                <Route path='/contact' component={IContact} />
 
-                <Route path="/vr" component={IframeHome2016VR} />
-                {/* <Route path="/air" component={IframeHome2016Air} /> */}
-                <Route path="/tiyanqu" component={IframeHome2016Tiyanqu} />
-                <Route path="/zhanshiqu" component={IframeHome2016Zhanshiqu} />
+                <Route path='/vr' component={IframeHome2016VR} />
+                {/* <Route path='/air' component={IframeHome2016Air} /> */}
+                <Route path='/tiyanqu' component={IframeHome2016Tiyanqu} />
+                <Route path='/zhanshiqu' component={IframeHome2016Zhanshiqu} />
 
               </Switch>
             </div>
@@ -112,10 +111,8 @@ export default class BaseLayout extends React.Component {
         </Layout>
 
       </Layout>
-    )
-  };
+    );
+  }
 
-
-
-};
+}
 
