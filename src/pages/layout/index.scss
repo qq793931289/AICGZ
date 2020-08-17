@@ -33,7 +33,11 @@
 }
 
 .content {
+
   // overflow: hidden;
   // overflow-x: hidden;
   // overflow-y: hidden;
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 }

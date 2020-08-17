@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, Route, Switch,
   // Link
 } from 'react-router-dom';
-import { Row, Col, Divider,Layout, Menu  } from 'antd';
+import { Row, Col, Divider, Layout, Menu } from 'antd';
 import Home from './main/home2020/ui.comp';
 import Page1 from '../page1/page1';
 import { Home2016 } from './main/home2016/index';
@@ -14,6 +14,8 @@ import './index.scss';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { IframeHome2016, IframeHome2016VR, IframeHome2016Tiyanqu, IframeHome2016Zhanshiqu } from './main/home2016/iframe';
 import { IContact } from './main/contact/ui.comp';
+import { CesiumContainer } from '../../cesium/ui.comp';
+import ThreeContainer from '../../three/ui.comp';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -49,10 +51,10 @@ export default class BaseLayout extends React.Component {
           breakpoint='lg'
           collapsedWidth='0'
           onBreakpoint={broken => {
-            console.log(broken);
+            // console.log(broken);
           }}
           onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
+            // console.log(collapsed, type);
           }}
           width={256}
           theme='light'
@@ -68,32 +70,34 @@ export default class BaseLayout extends React.Component {
 
         <Layout >
 
-          <Header className='site-layout-sub-header-background' style={{ padding: 0, background: '#f0f2f5' }}>
+          {/* <Header className='site-layout-sub-header-background'
+            style={{ position: 'fixed', zIndex: 1, width: '100%', margin: 0, padding: 0, background: '#f0f2f5' }}
+          >
 
-            <Row justify='space-around' align='middle'>
-
-              <Col span={8}>
-                <DemoBox value={50}>
-                  <div>本网站持续更新中。。。(2020/08/16)</div>
-                </DemoBox>
-              </Col>
-
-            </Row>
-          </Header>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              本网站持续更新中。。。(2020/08/16)
+            </p>
+             
+          </Header> */}
 
           <Content className='content' style={{ margin: '0px 0px 0' }}>
-            <div className='site-layout-background' style={{ padding: 24, minHeight: 360, height: '100%' }}>
+            <div className='site-layout-background' style={{ padding: 0, margin: 0, minHeight: 360, height: '100%' }}>
               {/* content */}
               <Switch >
 
                 {/* <Route exact path='/' component={IframeHome2016} /> */}
                 <Route path='/iframehome2016' component={IframeHome2016} />
 
-                {/* <Route exact path='/' component={Home2016} /> */}
+                <Route exact path='/' component={Home2016} />
                 <Route path='/home2016' component={Home2016} />
 
                 <Route path='/home' component={Home} />
                 <Route path='/page1' component={Page1} />
+
+                <Route path='/cesium' component={CesiumContainer} />
+                <Route path='/three' component={ThreeContainer} />
+
                 <Route path='/menu' component={MenuM} />
                 <Route path='/contact' component={IContact} />
 

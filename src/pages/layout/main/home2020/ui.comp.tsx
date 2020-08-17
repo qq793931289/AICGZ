@@ -43,17 +43,17 @@ export default class Home extends React.Component {
 
   constructor(props: any) {
     super(props);
-    console.log(this.state);
+    // console.log(this.state);
 
   }
 
   private _handleClick() {
-    console.log(this.state.count);
+    // console.log(this.state.count);
     let num = this.state.count;
     this.setState({
       count: ++num,
     }, () => {
-      console.log(this.state.count)
+      // console.log(this.state.count)
     });
 
   }
@@ -62,8 +62,15 @@ export default class Home extends React.Component {
     return (
 
       <div>
-        HOME<br />
+        HOME
+        <br />
+        <br />
+        <br />
+        <p>
+          本网站持续更新中。。。(2020/08/16)
+        </p>
         <div>本网站构建相关信息：</div>
+
         <Divider orientation="left">技术栈</Divider>
         <ListStack />
 

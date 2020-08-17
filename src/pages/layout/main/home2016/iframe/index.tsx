@@ -19,7 +19,7 @@ export class IframeHome2016 extends React.Component<IframeProps> {
         <iframe
           style={{ width: '100%', height: '100vh', overflow: 'visible' }}
           onLoad={() => {
-            console.log('iframe load end')
+            // console.log('iframe load end')
           }}
           ref="iframe"
           src={this._url}
@@ -34,11 +34,11 @@ export class IframeHome2016 extends React.Component<IframeProps> {
   }
 }
 
-
+const baseUrl = 'http://www.aicgz.com/home2015';
 export class IframeHome2016VR extends React.Component {
   render() {
     return (
-      <IframeHome2016 url={'http://www.aicgz.com/home2015/vr/index.html'} />
+      <IframeHome2016 url={baseUrl + '/vr/index.html'} />
     );
   }
 }
@@ -54,7 +54,7 @@ export class IframeHome2016VR extends React.Component {
 export class IframeHome2016Tiyanqu extends React.Component {
   render() {
     return (
-      <IframeHome2016 url={'http://www.aicgz.com/home2015/tiyanqu/chapter-09/tiyanqu.html'} />
+      <IframeHome2016 url={baseUrl + '/tiyanqu/chapter-09/tiyanqu.html'} />
     );
   }
 }
@@ -62,7 +62,7 @@ export class IframeHome2016Tiyanqu extends React.Component {
 export class IframeHome2016Zhanshiqu extends React.Component {
   render() {
     return (
-      <IframeHome2016 url={'http://www.aicgz.com/home2015/tiyanqu/chapter-09/zhanshiqu.html'} />
+      <IframeHome2016 url={baseUrl + '/tiyanqu/chapter-09/zhanshiqu.html'} />
     );
   }
 }

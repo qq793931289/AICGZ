@@ -22,7 +22,7 @@ export default class Sider extends React.Component {
 
   constructor(props: any) {
     super(props);
-    console.log(this.state);
+    // console.log(this.state);
 
   }
 

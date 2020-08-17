@@ -21,11 +21,11 @@ export default class Sider extends React.Component {
     theme: 'light',
   };
 
-  
+
 
   constructor(props: any) {
     super(props);
-    console.log(this.state);
+    // console.log(this.state);
 
   }
 
@@ -73,7 +73,9 @@ export default class Sider extends React.Component {
 
           <SubMenu key='sub1' icon={<CodeSandboxOutlined />} title='iThree'>
 
-            <Menu.Item key='3'><Link to='/page1'>Page1</Link></Menu.Item>
+            <Menu.Item key='31'><Link to='/three'>three</Link></Menu.Item>
+
+            <Menu.Item key='32'><Link to='/page1'>Page1</Link></Menu.Item>
             <Menu.Item key='4'><Link to='/menu'>menu</Link></Menu.Item>
             <SubMenu key='sub1-2' title='Submenu'>
               <Menu.Item key='5'>Option 5</Menu.Item>
@@ -83,9 +85,8 @@ export default class Sider extends React.Component {
           </SubMenu>
 
           <SubMenu key='sub2' icon={<GlobalOutlined />} title='iCesium'>
-
+            <Menu.Item key='33'><Link to='/cesium'>cesium</Link></Menu.Item>
             <Menu.Item key='7'><Link to='/page1'>Page1</Link></Menu.Item>
-
             <Menu.Item key='8'><Link to='/home'>home</Link></Menu.Item>
             <Menu.Item key='9'><Link to='/home2016'>home2016</Link></Menu.Item>
             <Menu.Item key='10'>Option 10</Menu.Item>

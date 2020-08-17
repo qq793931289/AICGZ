@@ -7,11 +7,11 @@ const webpack = require('webpack')
 const REACT_APP_PROXY_URL = process.env.REACT_APP_PROXY_URL;
 let APIUrl = '';
 
-if (REACT_APP_PROXY_URL == "pro") {//生产环境
+if (REACT_APP_PROXY_URL == "pro") { //生产环境
   APIUrl = "生产环境的请求地址";
-} else if (REACT_APP_PROXY_URL == "dev") {//测试环境
+} else if (REACT_APP_PROXY_URL == "dev") { //测试环境
   APIUrl = "测试环境";
-} else {//本地跑的服务
+} else { //本地跑的服务
   APIUrl = "本地或者默认请求地址";
 }
 
@@ -31,8 +31,7 @@ module.exports = {
       new CompressionWebpackPlugin({
         algorithm: 'gzip',
         test: new RegExp(
-          '\\.(' +
-          ['js', 'css'].join('|') +
+          '\\.(' + ['js', 'css'].join('|') +
           ')$'
         ),
         threshold: 1024,
@@ -48,7 +47,8 @@ module.exports = {
         cacheGroups: {
           commons: {
             chunks: 'initial',
-            minChunks: 2, maxInitialRequests: 5,
+            minChunks: 2,
+            maxInitialRequests: 5,
             minSize: 0
           },
           vendor: {
@@ -70,20 +70,24 @@ module.exports = {
         compress: {
           warnings: false,
           drop_debugger: true,
-          drop_console: true,//不打印log
+          drop_console: true, //不打印log
         },
       }
     }
   },
   babel: {
     plugins: [
-      ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }],
-      ['@babel/plugin-proposal-decorators', { legacy: true }]
+      ['import', {
+        libraryName: 'antd',
+        libraryDirectory: 'es',
+        style: 'css'
+      }],
+      ['@babel/plugin-proposal-decorators', {
+        legacy: true
+      }]
     ]
   },
-  plugins: [
-    {
-      plugin: CracoVtkPlugin()
-    }
-  ]
+  plugins: [{
+    plugin: CracoVtkPlugin()
+  }]
 };

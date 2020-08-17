@@ -17,7 +17,7 @@ export class Iframe extends React.Component<IframeProps> {
         <iframe
           style={{ width: '100%', height: '100vh', overflow: 'visible' }}
           onLoad={() => {
-            console.log('iframe load end');
+            // console.log('iframe load end');
           }}
           ref='iframe'
           src='http://www.aicgz.com/home2015'
