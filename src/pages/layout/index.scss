@@ -22,16 +22,18 @@
   background: #fff;
 }
 
-.layout{
+.layout {
   height: 100%;
 }
 
-.sider{
+.sider {
   // flex: 0 0 400px;
   // max-width: 400px!important;
   // width: 512px!important;
 }
 
-.content{
-  overflow: hidden;
+.content {
+  // overflow: hidden;
+  // overflow-x: hidden;
+  // overflow-y: hidden;
 }

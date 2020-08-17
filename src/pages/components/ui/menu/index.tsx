@@ -11,7 +11,7 @@ import {
   QrcodeOutlined,
 } from '@ant-design/icons';
 
-import image from './style/brickpsert.jpg';
+import image from './style/logo.png';
 
 const { SubMenu } = Menu;
 
@@ -93,17 +93,17 @@ export default class Sider extends React.Component {
     return (
       <div>
         <img src={image} className="logo" alt='logo' />
-        <br />
+        {/* <br />
         <Switch onChange={this.changeMode} /> Change Mode
         <Divider type="vertical" />
         <Switch
           // defaultChecked
           onChange={this.changeTheme} /> Change Style
         <br />
-        <br />
+        <br /> */}
         <Menu
           style={{ width: 'auto' }}
-          defaultSelectedKeys={['2']}
+          defaultSelectedKeys={['1']}
           // defaultOpenKeys={['sub1']}
           // mode={'inline'}
           // theme={'dark'}
@@ -112,11 +112,11 @@ export default class Sider extends React.Component {
         >
 
           <Menu.Item key="1" icon={<HomeOutlined />}>
-            <Link to="/iframe">主页(2016版)</Link>
+            <Link to="/home2016">主页(2016)</Link>
           </Menu.Item>
 
           <Menu.Item key="2" icon={<HomeOutlined />}>
-            <Link to="/">主页(2020)</Link>
+            <Link to="/home">主页(2020)</Link>
           </Menu.Item>
 
           <SubMenu key="sub1" icon={<CodeSandboxOutlined />} title="iThree">
@@ -134,15 +134,27 @@ export default class Sider extends React.Component {
 
             <Menu.Item key="7"><Link to="/page1">Page1</Link></Menu.Item>
 
-            <Menu.Item key="8"><Link to="/">home</Link></Menu.Item>
-            <Menu.Item key="9"><Link to="/iframe">iframe</Link></Menu.Item>
+            <Menu.Item key="8"><Link to="/home">home</Link></Menu.Item>
+            <Menu.Item key="9"><Link to="/home2016">home2016</Link></Menu.Item>
             <Menu.Item key="10">Option 10</Menu.Item>
           </SubMenu>
+
           <Menu.Item key="link" icon={<QrcodeOutlined />}>
+
+            <Link to="/contact">联系信息</Link>
             {/* <a href="#" target="_blank" rel="noopener noreferrer">
               Ant Design
             </a> */}
           </Menu.Item>
+
+          <Menu.Item key="contact" icon={<QrcodeOutlined />}>
+
+            <Link to="/contact">手机体验</Link>
+            {/* <a href="#" target="_blank" rel="noopener noreferrer">
+              Ant Design
+            </a> */}
+          </Menu.Item>
+
         </Menu>
       </div>
     );

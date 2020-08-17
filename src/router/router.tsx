@@ -71,7 +71,7 @@ import {
 // import Counter from 'bundle-loader?lazy&name=counter!pages/Counter/Counter';
 // import UserInfo from 'bundle-loader?lazy&name=userInfo!pages/UserInfo/UserInfo';
 
-import Home from '../pages/home/home';
+import Home from '../pages/layout/main/home2020/ui.comp';
 import Page1 from '../pages/page1/page1';
 import Menu from '../pages/menu/navigation';
 

@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   devtool: 'inline-source-map',
   /*入口*/
-  // entry: path.join(__dirname, 'src/index.tsx'),
+  entry: path.join(__dirname, 'src/index.tsx'),
   entry: [
     'react-hot-loader/patch',
     path.join(__dirname, 'src/index.tsx')
@@ -26,6 +26,7 @@ module.exports = {
     filename: 'bundle.js',
     // chunkFilename: '[name].js',
     chunkFilename: '[name].[chunkhash].js',
+    // publicPath: 'home2020/',
   },
   /*src文件夹下面的以.js结尾的文件，要使用babel解析*/
   /*cacheDirectory是用来缓存编译结果，下次编译加速*/
@@ -60,10 +61,10 @@ module.exports = {
 
   devServer: {
     hot: true,
-    // port: 8080,
-    // contentBase: path.join(__dirname, './dist'),
-    // historyApiFallback: true,
-    // host: '0.0.0.0',
+    port: 8080,
+    contentBase: path.join(__dirname, './dist'),
+    historyApiFallback: true,
+    host: '0.0.0.0',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

@@ -31,6 +31,9 @@
 
 
 import React from 'react';
+import { Divider } from 'antd';
+import { ListStack } from './list/ui.comp';
+
 
 export default class Home extends React.Component {
 
@@ -44,7 +47,7 @@ export default class Home extends React.Component {
 
   }
 
-  public _handleClick() {
+  private _handleClick() {
     console.log(this.state.count);
     let num = this.state.count;
     this.setState({
@@ -57,10 +60,16 @@ export default class Home extends React.Component {
 
   render() {
     return (
+
       <div>
-        this is home~<br />
-        当前计数：{ this.state.count}<br />
-        <button onClick={() => this._handleClick()}>自增</button>
+        HOME<br />
+        <div>本网站构建相关信息：</div>
+        <Divider orientation="left">技术栈</Divider>
+        <ListStack />
+
+
+        {/* 当前计数：{ this.state.count}<br /> */}
+        {/* <button onClick={() => this._handleClick()}>点击</button> */}
       </div>
     )
   }

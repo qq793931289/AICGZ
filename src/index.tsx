@@ -88,3 +88,8 @@ function renderWithHotReload(RootElement: any) {
     document.getElementById('root')
   )
 }
+
+document.oncontextmenu = function () { return false; };
+document.onselectstart = function () { return false; };
+
+export default renderWithHotReload;

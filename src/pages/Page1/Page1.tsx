@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // import './page1.scss';
 
-import image from './images/brickpsert.jpg';
+import image from './images/timg.jpg';
 // const url = './images/brickpsert.jpg';
 
 export default class Page1 extends Component {
