@@ -1,21 +1,22 @@
 const CracoVtkPlugin = require("craco-vtk");
-// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack')
 
 
-const REACT_APP_PROXY_URL = process.env.REACT_APP_PROXY_URL;
+const REACT_APP_ENV = process.env.REACT_APP_ENV;
+
 let APIUrl = '';
 
-if (REACT_APP_PROXY_URL == "pro") { //生产环境
+if (REACT_APP_ENV === 'pro') { //生产环境
   APIUrl = "生产环境的请求地址";
-} else if (REACT_APP_PROXY_URL == "dev") { //测试环境
+} else if (REACT_APP_ENV === 'dev') { //测试环境
   APIUrl = "测试环境";
 } else { //本地跑的服务
   APIUrl = "本地或者默认请求地址";
 }
 
-console.log(REACT_APP_PROXY_URL, APIUrl, process.env.REACT_APP_PROXY_URL);
+console.log(REACT_APP_ENV, APIUrl, process.env.REACT_APP_ENV);
 
 console.log(process.env.REACT_APP_PROXY_URL)
 console.log(process.env.REACT_APP_ENV)
@@ -24,6 +25,7 @@ console.log(process.env.REACT_APP_API_URL) // http://localhost:5555
 console.log('http://localhost:5555');
 
 module.exports = {
+  devtool: false,
   webpack: {
     plugins: [
       // new BundleAnalyzerPlugin(),
@@ -47,9 +49,21 @@ module.exports = {
         cacheGroups: {
           commons: {
             chunks: 'initial',
-            minChunks: 2,
+            minChunks: 1,
             maxInitialRequests: 5,
-            minSize: 0
+            minSize: 30000
+          },
+          cesium: {
+            name: 'cesium',
+            chunks: 'async',
+            test: /[\\/]node_modules[\\/](cesium)[\\/]/,
+            priority: 11,
+          },
+          three: {
+            name: 'three',
+            chunks: 'async',
+            test: /[\\/]node_modules[\\/](three)[\\/]/,
+            priority: 12,
           },
           vendor: {
             test: /node_modules/,

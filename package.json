@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^4.5.4",
     "cesium": "^1.72.0",
+    "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
@@ -69,10 +70,14 @@
     "analyze": "source-map-explorer build/static/js/main.*",
     "start": "react-scripts start   ",
     "build": "react-scripts build",
-    "craco-build": " set REACT_APP_ENV=dev && craco build",
-    "cbuild": " set REACT_APP_ENV=dev && craco build",
+    "craco-build": " set REACT_APP_ENV=production && craco build",
+    "build:dev": "dotenv -e .env.development react-app-rewired build",
+    "c-build": " set REACT_APP_ENV=dev && craco build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cstart": "node scripts/start.js",
+    "cbuild": "node scripts/build.js",
+    "ctest": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": "react-app"

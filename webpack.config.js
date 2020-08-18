@@ -5,10 +5,13 @@ let APIUrl = '';
 
 if (REACT_APP_PROXY_URL == "pro") {//生产环境
   APIUrl = "生产环境的请求地址";
+  console.log(APIUrl);
 } else if (REACT_APP_PROXY_URL == "dev") {//测试环境
   APIUrl = "测试环境";
+  console.log(APIUrl);
 } else {//本地跑的服务
   APIUrl = "本地或者默认请求地址";
+  console.log(APIUrl);
 }
 
 console.log(REACT_APP_PROXY_URL, APIUrl, process.env.REACT_APP_PROXY_URL);
