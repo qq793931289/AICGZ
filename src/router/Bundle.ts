@@ -1,37 +1,46 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-// export default class Bundle extends Component {
-//   state = {
-//     // short for "module" but that's a keyword in js, so "mod"
-//     mod: null
-//   };
+export interface BundleProps {
+  load: any;
+}
 
-//   componentWillMount() {
-//     this.load(this.props)
-//   }
+class Bundle extends React.Component<BundleProps>{
 
-//   componentWillReceiveProps(nextProps: any) {
-//     // if (nextProps.load !== this.props.load) {
-//     this.load(nextProps)
-//     // }
-//   }
+  constructor(props: any) {
+    super(props);
 
-//   load(props: any) {
+  }
 
-//     this.setState({
-//       mod: null
-//     });
+  public state = {
+    // short for "module" but that's a keyword in js, so "mod"
+    mod: null
+  };
 
-//     props.load((mod: any) => {
-//       this.setState({
-//         // handle both es imports and cjs
-//         mod: mod.default ? mod.default : mod
-//       })
-//     })
-//   }
+  public componentWillMount() {
+    this.load(this.props)
+  }
 
-//   render() {
-//     return this.props.children(this.state.mod)
-//     // return <div></div>
-//   }
-// }
+  public componentWillReceiveProps(nextProps: any) {
+    if (nextProps.load !== (this.props as any).load) {
+      this.load(nextProps)
+    }
+  }
+
+  public load(props: any) {
+    this.setState({
+      mod: null
+    });
+    props.load((mod: any) => {
+      this.setState({
+        // handle both es imports and cjs
+        mod: mod.default ? mod.default : mod
+      })
+    })
+  }
+
+  render() {
+    return this.props.children(this.state.mod)
+  }
+}
+
+export default Bundle;

@@ -4,8 +4,18 @@ import {
   // Link
 } from 'react-router-dom';
 import { Row, Col, Divider, Layout, Menu } from 'antd';
+
+import Bundle from '../../router/bundle';
+import Loading from '../components/ui/loading/loading';
+import NotFound from './main/notfound';
+
+
 import Home from './main/home2020/ui.comp';
 import Page1 from '../page1/page1';
+
+// import Home from 'bundle-loader?lazy&name=home!pages/Home/Home';
+// import Page1 from 'bundle-loader?lazy&name=page1!../page1/page1';
+
 import { Home2016 } from './main/home2016/index';
 import MenuM from '../components/ui/menu/index';
 // import 'antd/dist/antd.scss';
@@ -35,6 +45,15 @@ class Default extends React.Component {
   }
 
 }
+
+
+const createComponent = (component: any) => (props: any) => (
+  <Bundle load={component}>
+    {
+      (Component: any) => Component ? <Component {...props} /> : <Loading />
+    }
+  </Bundle>
+);
 
 export default class BaseLayout extends React.Component {
 
@@ -105,6 +124,10 @@ export default class BaseLayout extends React.Component {
                 {/* <Route path='/air' component={IframeHome2016Air} /> */}
                 <Route path='/tiyanqu' component={IframeHome2016Tiyanqu} />
                 <Route path='/zhanshiqu' component={IframeHome2016Zhanshiqu} />
+
+
+                <Route path="/home" component={createComponent(Home)} />
+                <Route component={createComponent(NotFound)} />
 
               </Switch>
             </div>

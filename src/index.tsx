@@ -1,3 +1,13 @@
+import {
+  Router as HashRouter, // 或者是HashRouter、MemoryRouter
+  Route,   // 这是基本的路由块
+  Link,    // 这是a标签
+  Switch,  // 这是监听空路由的
+  Redirect, // 这是重定向
+  Prompt   // 防止转换
+} from 'react-router-dom';
+// import { Router } from 'react-router-dom';
+
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 import './index.scss';
@@ -86,9 +96,16 @@ import getRouter from './router/router';
 //     document.getElementById('root'));
 // }
 
+
+import createHistory from 'history/createHashHistory';
+const history = createHistory();
+
+
 ReactDom.render(
-  getRouter(),
-  document.getElementById('root'));
+  <HashRouter history={history}>
+    {getRouter()}
+  </HashRouter >
+  , document.getElementById('root'));
 
 document.oncontextmenu = function () { return false; };
 document.onselectstart = function () { return false; };
