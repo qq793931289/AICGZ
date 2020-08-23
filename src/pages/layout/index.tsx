@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import { Row, Col, Divider, Layout, Menu } from 'antd';
 
-import Bundle from '../../router/bundle';
+// import Bundle from '../../router/bundle';
 import Loading from '../components/ui/loading/loading';
 import NotFound from './main/notfound';
 
@@ -24,7 +24,8 @@ import './index.scss';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { IframeHome2016, IframeHome2016VR, IframeHome2016Tiyanqu, IframeHome2016Zhanshiqu } from './main/home2016/iframe';
 import { IContact } from './main/contact/ui.comp';
-import { CesiumContainer } from '../../cesium/ui.comp';
+// import { CesiumContainer } from '../../cesium/ui.comp';
+import { CesiumContainer } from '../../cesium/index';
 import ThreeContainer from '../../three/ui.comp';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -47,13 +48,13 @@ class Default extends React.Component {
 }
 
 
-const createComponent = (component: any) => (props: any) => (
-  <Bundle load={component}>
-    {
-      (Component: any) => Component ? <Component {...props} /> : <Loading />
-    }
-  </Bundle>
-);
+// const createComponent = (component: any) => (props: any) => (
+//   <Bundle load={component}>
+//     {
+//       (Component: any) => Component ? <Component {...props} /> : <Loading />
+//     }
+//   </Bundle>
+// );
 
 export default class BaseLayout extends React.Component {
 
@@ -126,8 +127,8 @@ export default class BaseLayout extends React.Component {
                 <Route path='/zhanshiqu' component={IframeHome2016Zhanshiqu} />
 
 
-                <Route path="/home" component={createComponent(Home)} />
-                <Route component={createComponent(NotFound)} />
+                {/* <Route path="/home" component={createComponent(Home)} />
+                <Route component={createComponent(NotFound)} /> */}
 
               </Switch>
             </div>

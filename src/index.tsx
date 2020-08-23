@@ -1,16 +1,17 @@
-import {
-  Router as HashRouter, // 或者是HashRouter、MemoryRouter
-  Route,   // 这是基本的路由块
-  Link,    // 这是a标签
-  Switch,  // 这是监听空路由的
-  Redirect, // 这是重定向
-  Prompt   // 防止转换
-} from 'react-router-dom';
+// import {
+//   Router as HashRouter, // 或者是HashRouter、MemoryRouter
+//   Route,   // 这是基本的路由块
+//   Link,    // 这是a标签
+//   Switch,  // 这是监听空路由的
+//   Redirect, // 这是重定向
+//   Prompt   // 防止转换
+// } from 'react-router-dom';
 // import { Router } from 'react-router-dom';
 
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 import './index.scss';
+import { message, Button } from 'antd';
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
@@ -97,14 +98,20 @@ import getRouter from './router/router';
 // }
 
 
-import createHistory from 'history/createHashHistory';
-const history = createHistory();
-
+// import createHistory from 'history/createHashHistory';
+// const history = createHistory();
 
 ReactDom.render(
-  <HashRouter history={history}>
+  // <HashRouter history={history}>
+  //   {getRouter()}
+  // </HashRouter >
+  <div style={{ height: '100vh' }}>
     {getRouter()}
-  </HashRouter >
+    {
+      message.success('近期已更新：iCesium ')
+    }
+
+  </div >
   , document.getElementById('root'));
 
 document.oncontextmenu = function () { return false; };

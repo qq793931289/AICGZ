@@ -1,15 +1,27 @@
 
 
+import 'cesium/Source/Widgets/widgets.css';
+
+// const axios = require('axios').default;
 import * as React from 'react';
 import * as Cesium from 'cesium';
-import * as THREE from 'three';
+// import * as THREE from 'three';
+import axios from 'axios';
+// import jsonpAdapter from 'axios-jsonp';
+// import jsonp from 'jsonp';
 
+
+import { Input } from 'antd';
+import { CoordinateTools } from './cesiumutils/coordinatetools';
+import { API } from '../api';
+
+const { Search } = Input;
 
 // @import url(./templates/bucket.css);
-import 'cesium/Source/Widgets/widgets.css';
 // import { Link } from 'react-router-dom';
-(Cesium as any).buildModuleUrl.setBaseUrl('https://cesium.com/downloads/cesiumjs/releases/1.72/Build/Cesium/Source');
-(window as any).CESIUM_BASE_URL = 'https://cesium.com/downloads/cesiumjs/releases/1.72/Build/Cesium/Source';
+// (Cesium as any).buildModuleUrl.setBaseUrl('https://cesium.com/downloads/cesiumjs/releases/1.72/Build/Cesium/Source');
+// (window as any).CESIUM_BASE_URL = 'https://cesium.com/downloads/cesiumjs/releases/1.72/Build/Cesium/';
+(window as any).CESIUM_BASE_URL = 'https://v-edu.org.cn/sre/file/map/cesium';
 
 
 
@@ -19,7 +31,7 @@ Cesium.Ion.defaultAccessToken =
 
 export class CesiumContainer extends React.Component {
 
-  public viewer?: Cesium.Viewer;
+  public viewer?: Cesium.CesiumWidget;
   public googleMap?: Cesium.UrlTemplateImageryProvider;
   public mapboxMap?: Cesium.MapboxStyleImageryProvider;
 
@@ -32,18 +44,18 @@ export class CesiumContainer extends React.Component {
     // console.log(Cesium, THREE);
     // console.log(this.props.match.params);
     // console.log(this.props.history.location.state);
-    this.viewer = new Cesium.Viewer('cesiumContainer', {
+    this.viewer = new Cesium.CesiumWidget('cesiumContainer', {
       imageryProvider: false as any,
-      selectionIndicator: false,
-      animation: false,
-      timeline: false,
-      fullscreenButton: false,
-      infoBox: false,
-      homeButton: false,
-      baseLayerPicker: false,
-      navigationHelpButton: false,
-      geocoder: false,
-      sceneModePicker: false,
+      // selectionIndicator: false,
+      // animation: false,
+      // timeline: false,
+      // fullscreenButton: false,
+      // infoBox: false,
+      // homeButton: false,
+      // baseLayerPicker: false,
+      // navigationHelpButton: false,
+      // geocoder: false,
+      // sceneModePicker: false,
       scene3DOnly: true,
       requestRenderMode: true,
       maximumRenderTimeChange: Infinity,
@@ -58,8 +70,10 @@ export class CesiumContainer extends React.Component {
       // })
     });
 
-    (this.viewer.cesiumWidget.creditContainer as HTMLElement).style.display = "none";
+    // (this.viewer.cesiumWidget.creditContainer as HTMLElement).style.display = "none";
     this.viewer.scene.debugShowFramesPerSecond = true;
+
+    this.viewer.scene.screenSpaceCameraController.maximumZoomDistance = 30000000;
 
     this.viewer.scene.skyBox && (this.viewer.scene.skyBox.show = false);
     this.viewer.scene.sun = new Cesium.Sun();
@@ -129,6 +143,77 @@ export class CesiumContainer extends React.Component {
     // this.mapboxMapStatus(false);
   };
 
+  private async _search(input: string): Promise<any> {
+
+    this.viewer?.scene.primitives.removeAll();
+
+    // this.viewer?.scene.primitives.add(new Cesium.LabelCollection());
+    const labels = this.viewer!.scene.primitives.add(new Cesium.LabelCollection());
+
+
+    var center = Cesium.Cartesian3.fromDegrees(113.59777, 24.03883);
+    // labels.modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(center);
+
+    // var l = labels.add({
+    //   show: true,
+    //   // position: Cesium.Cartesian3.ZERO,
+    //   position: new Cesium.Cartesian3(-10000.0, 0.0, 0.0),
+    //   text: '广州市',
+    //   font: '30px sans-serif',
+    //   fillColor: Cesium.Color.WHITE,
+    //   outlineColor: Cesium.Color.BLACK,
+    //   outlineWidth: 1.0,
+    //   showBackground: false,
+    //   backgroundColor: new Cesium.Color(0.165, 0.165, 0.165, 0.8),
+    //   backgroundPadding: new Cesium.Cartesian2(7, 5),
+    //   style: Cesium.LabelStyle.FILL,
+    //   pixelOffset: Cesium.Cartesian2.ZERO,
+    //   eyeOffset: Cesium.Cartesian3.ZERO,
+    //   horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
+    //   verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+    //   scale: 1.0,
+    //   translucencyByDistance: undefined,
+    //   pixelOffsetScaleByDistance: undefined,
+    //   heightReference: Cesium.HeightReference.NONE,
+    //   distanceDisplayCondition: undefined
+    // });
+
+
+    const points = this.viewer!.scene.primitives.add(new Cesium.PointPrimitiveCollection());
+    // points.modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(center);
+
+    API.cesium.baiduMap(input).then(res => {
+      if (res.results.length == 0 || !res.results[0] || !res.results[0].location || !res.results[0].location.lng) {
+        alert('tips:未找到位置!');
+        return;
+      } else {
+        res.results.map((point: any) => {
+          const realPoint = CoordinateTools.getWgs84xy(point.location.lng, point.location.lat);
+          points.add({
+            position: Cesium.Cartesian3.fromDegrees(realPoint[0], realPoint[1], 10),
+            pixelSize: 10,
+            color: Cesium.Color.RED.withAlpha(0.8),
+          });
+          labels.add({
+            position: Cesium.Cartesian3.fromDegrees(realPoint[0], realPoint[1], 10),
+            text: point.name,
+            horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+            verticalOrigin: Cesium.VerticalOrigin.TOP,
+            scaleByDistance: new Cesium.NearFarScalar(10.0, 0.5, 5000, 0.5),
+            fillColor: Cesium.Color.YELLOW.withAlpha(0.8),
+          });
+          this.viewer!.scene.requestRender();
+        })
+        const poi = CoordinateTools.getWgs84xy(res.results[0].location.lng, res.results[0].location.lat);
+        this.viewer?.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(poi[0], poi[1], 1000.0),
+          orientation: new Cesium.HeadingPitchRange(0, -1.57, 1000),
+          duration: 3,
+          maximumHeight: 50000,
+        });
+      }
+    })
+  }
 
   public render() {
     const style = { height: '100vh' };
@@ -137,6 +222,17 @@ export class CesiumContainer extends React.Component {
         id='cesiumContainer'
         style={style}
       >
+        <div style={{ position: 'relative', top: 50, left: 150, zIndex: 1 }}>
+          <Search
+            placeholder="百度地图API搜索"
+            onSearch={value => {
+              this._search(value);
+            }}
+            style={{ width: 512, position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+            enterButton
+          />
+        </div>
+
         {/* 浏览器不兼容! */}
         {/* <Link to='/Home' style={{ color: 'black' }}></Link> */}
         {/* <Link to='/detail' style={{ color: 'black' }}></Link> */}
