@@ -63,9 +63,9 @@ export default class ThreeContainer extends React.Component {
     this.renderCanvas();
 
     this.mesh
-      .rotateX(0.002 * Math.random())
-      .rotateY(0.002 * Math.random())
-      .rotateZ(-0.002 * Math.random());
+      .rotateX(0.002 * Math.random() * 4)
+      .rotateY(0.002 * Math.random() * 4)
+      .rotateZ(-0.002 * Math.random() * 4);
 
   }
 
@@ -108,16 +108,18 @@ export default class ThreeContainer extends React.Component {
     light2.position.set(0, - 1, 0);
     this.scene.add(light2);
 
-    const box = new THREE.BoxBufferGeometry(4, 4, 4, 2, 2, 2);
+    const box = new THREE.SphereBufferGeometry(4, 4, 4, 1, 1, 1);
     const material = new THREE.MeshNormalMaterial({
       // color: 0xFFFF00,
       wireframe: true,
+      transparent: true,
+      opacity: 0.6,
     });
     this.mesh = new THREE.Mesh(box, material);
     this.scene.add(this.mesh);
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
-    this.renderer.setPixelRatio(window.devicePixelRatio * 2);
+    this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1;
