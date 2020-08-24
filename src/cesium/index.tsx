@@ -2,46 +2,39 @@ import * as React from 'react';
 import * as iCesium from 'icesium';
 
 import { Input } from 'antd';
+import { CesiumContainer } from './ui.comp';
 const { Search } = Input;
 
-export class CesiumContainer extends React.Component {
+export class CesiumComponent extends React.Component {
 
   private iCesium?: iCesium.CesiumContainer;
-  private _container?: HTMLDivElement | null;
+  public _container?: HTMLDivElement | null;
 
   public componentDidMount() {
-    this.iCesium = new iCesium.CesiumContainer({
-      id: 'cesiumContainer',
-    });
-    console.log(this._container);
+    // this.search = React.createRef();
+
   }
 
   public render() {
-    const style = { height: '100vh' };
+    const style: React.CSSProperties = { position: 'relative', top: 0, left: 0, zIndex: 1 };
     return (
-      <div
-        id='cesiumContainer'
-        ref={(ref) => this._container = ref}
-        style={style}
-      >
-        <div style={{ position: 'relative', top: 50, left: 150, zIndex: 1 }}>
+      <div style={style}>
+        <CesiumContainer />
+
+        <div style={style}>
           <Search
             placeholder='百度地图API搜索'
+            // ref='search'
             onSearch={value => {
               // this._search(value);
-              this.iCesium!.search(value);
+              // this.iCesium!.search(value);
             }}
-            style={{ width: 512, position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+            style={{ width: 512, position: 'fixed', top: 50, left: 300, zIndex: 1 }}
             enterButton
           />
         </div>
-
-        {/* 浏览器不兼容! */}
-        {/* <Link to='/Home' style={{ color: 'black' }}></Link> */}
-        {/* <Link to='/detail' style={{ color: 'black' }}></Link> */}
-        {/* <a href='#/Home'>回到home</a>
-        <a href='#/detail'>回到detail</a> */}
       </div>
+
     );
   }
 

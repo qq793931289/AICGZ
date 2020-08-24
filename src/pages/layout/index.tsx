@@ -25,7 +25,8 @@ import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/i
 import { IframeHome2016, IframeHome2016VR, IframeHome2016Tiyanqu, IframeHome2016Zhanshiqu } from './main/home2016/iframe';
 import { IContact } from './main/contact/ui.comp';
 // import { CesiumContainer } from '../../cesium/ui.comp';
-import { CesiumContainer } from '../../cesium/index';
+// import { CesiumContainer } from '../../cesium/ui.comp';
+import { CesiumComponent } from '../../cesium/index';
 import ThreeContainer from '../../three/ui.comp';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -109,13 +110,13 @@ export default class BaseLayout extends React.Component {
                 {/* <Route exact path='/' component={IframeHome2016} /> */}
                 <Route path='/iframehome2016' component={IframeHome2016} />
 
-                <Route exact path='/' component={Home2016} />
+                {/* <Route exact path='/' component={Home2016} /> */}
                 <Route path='/home2016' component={Home2016} />
 
                 <Route path='/home' component={Home} />
                 <Route path='/page1' component={Page1} />
 
-                <Route path='/cesium' component={CesiumContainer} />
+                <Route path='/cesium' component={CesiumComponent} />
                 <Route path='/three' component={ThreeContainer} />
 
                 <Route path='/menu' component={MenuM} />

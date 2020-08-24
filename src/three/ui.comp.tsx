@@ -4,13 +4,14 @@ import * as React from 'react';
 import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass.js';
 // import 'three/examples/jsm/controls/OrbitControls.js';
 // import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 // import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 // import { RoughnessMipmapper } from 'three/examples/jsm/utils/RoughnessMipmapper.js';
 // console.log(THREE);
-
-
 
 export default class ThreeContainer extends React.Component {
 
@@ -20,6 +21,8 @@ export default class ThreeContainer extends React.Component {
   public scene: any;
   public renderer: any;
   public mesh: any;
+  public composer: any;
+  public afterimagePass: any;
 
   // constructor(props) {
   //   super(props);
@@ -36,8 +39,11 @@ export default class ThreeContainer extends React.Component {
 
   }
 
-  public onWindowResize() {
-    return;
+  public onWindowResize = () => {
+    if (!this.camera) {
+      console.log(this.camera);
+      return;
+    }
 
     this.camera.aspect = window.innerWidth / window.innerHeight;
 
@@ -56,14 +62,19 @@ export default class ThreeContainer extends React.Component {
 
     this.renderCanvas();
 
-    this.mesh.rotateX(0.01).rotateY(0.01).rotateZ(-0.01);
+    this.mesh
+      .rotateX(0.002 * Math.random())
+      .rotateY(0.002 * Math.random())
+      .rotateZ(-0.002 * Math.random());
 
   }
 
   public renderCanvas = () => {
 
-    this.renderer.render(this.scene, this.camera);
-
+    // this.renderer.render(this.scene, this.camera);
+    if (this.composer) {
+      this.composer.render();
+    }
   }
 
   public init() {
@@ -79,80 +90,34 @@ export default class ThreeContainer extends React.Component {
     this.camera.position.z = 2750;
 
     // console.log(this.container);
-    // var SCREEN_WIDTH = this.container.style.width;
-    // var SCREEN_HEIGHT = this.container.style.height;
-    // var aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-    // var frustumSize = 600;
+    // const SCREEN_WIDTH = this.container.style.width;
+    // const SCREEN_HEIGHT = this.container.style.height;
+    // const aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+    // const frustumSize = 600;
     // this.camera = new THREE.OrthographicCamera(0.5 * frustumSize * aspect / - 2, 0.5 * frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 150, 1000);
 
     this.scene = new THREE.Scene();
 
     this.scene.add(new THREE.AmbientLight(0x444444));
 
-    var light1 = new THREE.DirectionalLight(0xffffff, 0.5);
+    const light1 = new THREE.DirectionalLight(0xFFFFFF, 0.5);
     light1.position.set(1, 1, 1);
     this.scene.add(light1);
 
-    var light2 = new THREE.DirectionalLight(0xffffff, 1.5);
+    const light2 = new THREE.DirectionalLight(0xFFFFFF, 1.5);
     light2.position.set(0, - 1, 0);
     this.scene.add(light2);
 
-    const box = new THREE.BoxBufferGeometry(2, 2, 2, 2, 2, 2);
-    const material = new THREE.MeshStandardMaterial({
-      color: 0xffff00,
+    const box = new THREE.BoxBufferGeometry(4, 4, 4, 2, 2, 2);
+    const material = new THREE.MeshNormalMaterial({
+      // color: 0xFFFF00,
       wireframe: true,
     });
     this.mesh = new THREE.Mesh(box, material);
     this.scene.add(this.mesh);
 
-
-
-    // new RGBELoader()
-    //   .setDataType(THREE.UnsignedByteType)
-    //   .setPath('textures/equirectangular/')
-    //   .load('royal_esplanade_1k.hdr', function (texture) {
-
-    //     var envMap = pmremGenerator.fromEquirectangular(texture).texture;
-
-    //     scene.background = envMap;
-    //     scene.environment = envMap;
-
-    //     texture.dispose();
-    //     pmremGenerator.dispose();
-
-    //     render();
-
-    //     // model
-
-    //     // use of RoughnessMipmapper is optional
-    //     var roughnessMipmapper = new RoughnessMipmapper(renderer);
-
-    //     var loader = new GLTFLoader().setPath('models/gltf/DamagedHelmet/glTF/');
-    //     loader.load('DamagedHelmet.gltf', function (gltf) {
-
-    //       gltf.scene.traverse(function (child) {
-
-    //         if (child.isMesh) {
-
-    //           // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
-    //           // roughnessMipmapper.generateMipmaps( child.material );
-
-    //         }
-
-    //       });
-
-    //       scene.add(gltf.scene);
-
-    //       roughnessMipmapper.dispose();
-
-    //       render();
-
-    //     });
-
-    //   });
-
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, stencil: true });
-    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer.setPixelRatio(window.devicePixelRatio * 2);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1;
@@ -160,9 +125,6 @@ export default class ThreeContainer extends React.Component {
     this.container.appendChild(this.renderer.domElement);
 
     this.renderer.autoClearStencil = false;
-
-    // var pmremGenerator = new THREE.PMREMGenerator(renderer);
-    // pmremGenerator.compileEquirectangularShader();
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.addEventListener('change', this.renderCanvas); // use if there is no animation loop
@@ -173,18 +135,29 @@ export default class ThreeContainer extends React.Component {
 
     this.animate();
 
+    // postprocessing
+
+    this.composer = new EffectComposer(this.renderer);
+    this.composer.addPass(new RenderPass(this.scene, this.camera));
+
+    this.afterimagePass = new AfterimagePass();
+    this.composer.addPass(this.afterimagePass);
+
+    // this.afterimagePass.uniforms['damp'] = 0.99;
+    // this.afterimagePass.uniforms.damp = 0.999;
+
     window.addEventListener('resize', this.onWindowResize, false);
 
   }
 
 
   public render() {
-    const style = { width: '100%', height: '100vh' }
+    const style = { width: '100%', height: '100vh' };
     return (
       <div id='threeContainer' style={style}>
         {/* 浏览器不兼容! */}
       </div>
-    )
+    );
   }
 
 }
