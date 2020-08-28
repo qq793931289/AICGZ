@@ -9,7 +9,6 @@ export class WEBGLUtil {
     if (this.isWebGLAvailable()) {
       // Initiate function or other initializations here
       console.log(...LogStyle, '支持webGL 1.0');
-
     } else {
       // const warning = this.getWebGLErrorMessage();
       // document.getElementById('root').appendChild(warning);
