@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { cesConfig } from '../../../src/cesium/config';
+import { cesConfig } from '../../cesium/config';
 
 // import './page1.scss';
 
