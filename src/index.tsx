@@ -73,6 +73,9 @@ import ReactDom from 'react-dom';
 // import { AppContainer, setConfig } from 'react-hot-loader';
 
 import getRouter from './router/router';
+import { BrowserUtil } from './utils/browserutil';
+import { HrefUtil } from './utils/debug';
+import { WEBGLUtil } from './utils/webgl';
 
 // setConfig({
 //   showReactDomPatchNotification: false,
@@ -116,5 +119,10 @@ ReactDom.render(
 
 document.oncontextmenu = function () { return false; };
 document.onselectstart = function () { return false; };
+
+new BrowserUtil();
+new HrefUtil();
+new WEBGLUtil();
+
 
 // export default renderWithHotReload;
