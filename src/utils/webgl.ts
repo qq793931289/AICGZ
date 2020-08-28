@@ -8,20 +8,20 @@ export class WEBGLUtil {
 
     if (this.isWebGLAvailable()) {
       // Initiate function or other initializations here
-      console.log(...LogStyle, '支持webGL 1.0');
+      console.log(...LogStyle, ' 支持 WebGL 1.0 ');
     } else {
       // const warning = this.getWebGLErrorMessage();
       // document.getElementById('root').appendChild(warning);
       // document.body.appendChild(warning);
-      console.log(...LogStyle, '不支持webGL 1.0');
+      console.log(...LogStyle, ' 不支持 WebGL 1.0 ');
 
     }
 
     if (this.isWebGL2Available()) {
       // document.body.appendChild(this.getWebGL2ErrorMessage());
-      console.log(...LogStyle, '支持webGL 2.0');
+      console.log(...LogStyle, ' 支持 WebGL 2.0 ');
     } else {
-      console.log(...LogStyle, '不支持webGL 2.0');
+      console.log(...LogStyle, ' 不支持 WebGL 2.0 ');
     }
 
   }
