@@ -76,6 +76,7 @@ import getRouter from './router/router';
 import { BrowserUtil } from './utils/browserutil';
 import { HrefUtil } from './utils/debug';
 import { WEBGLUtil } from './utils/webgl';
+import { Statement } from './utils/const';
 
 // setConfig({
 //   showReactDomPatchNotification: false,
@@ -123,6 +124,7 @@ document.onselectstart = function () { return false; };
 new BrowserUtil();
 new HrefUtil();
 new WEBGLUtil();
+new Statement();
 
 
 // export default renderWithHotReload;
