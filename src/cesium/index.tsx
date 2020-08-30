@@ -21,7 +21,7 @@ export class CesiumComponent extends React.Component {
       <div style={style}>
         <CesiumContainer />
 
-        <div style={style}>
+        {/* <div style={style}>
           <Search
             placeholder='百度地图API搜索'
             // ref='search'
@@ -32,7 +32,7 @@ export class CesiumComponent extends React.Component {
             style={{ width: 512, position: 'fixed', top: 50, left: 300, zIndex: 1 }}
             enterButton
           />
-        </div>
+        </div> */}
       </div>
 
     );

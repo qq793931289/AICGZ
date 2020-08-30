@@ -7,53 +7,48 @@ export class Statement {
   }
 
   public init() {
+
+    const LogStyle: string[] = [
+      '%c%s',
+      `
+      color: yellow;
+      background: green;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: bold;
+      `,
+    ];
+
+    const LogStyle2 =
+      `
+      color: yellow;
+      background: green;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: bold;
+      `
+      ;
+
     console.log(
       [
-        '%caicgz.com',
-        '%c时间: 2020-08',
-        '%c主页: www.aicgz.com',
-        '%cCELL: 13725353558',
-        '%cINFO: CANTON  CHINA 😊',
+        '%c ',
+        '%c aicgz.com',
+        '%c 时间: 2020-08-16',
+        '%c 主页: www.aicgz.com',
+        '%c CELL: 13725353558',
+        '%c INFO: CANTON  CHINA 😊',
       ].join('\n').toString(),
       `
+          ${LogStyle2}
+          width: 300px;
+          height: 400px;
           background:url(http://www.aicgz.com/static/media/wechat.c14cf6c8.jpg) no-repeat left center;
-          background-size:30px 40px;
-          padding-left:40px;
-          line-height:50px;
-          font-size: 18px;
-          font-weight:bold;
-          color:#00D4FF
+          background-size:300px 400px;
           `,
-      `
-          background:none;
-          line-height:30px;
-          font-size: 18px;
-          font-weight:bold;
-          color:#00D4FF
-          `,
-      `
-           padding-left:40px;
-          background:none;
-          line-height:30px;
-          font-size: 18px;
-          font-weight:bold;
-          color:#00D4FF
-          `,
-      `
-          background:none;
-          line-height:30px;
-          font-size: 18px;
-          font-weight:bold;
-          color:#00D4FF
-          `,
-      `
-          padding-left:40px;
-          background:none;
-          line-height:30px;
-          font-size: 18px;
-          font-weight:bold;
-          color:#00D4FF
-          `,
+
+      LogStyle2, LogStyle2, LogStyle2, LogStyle2, LogStyle2,
+
+
     );
   }
 

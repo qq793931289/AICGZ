@@ -35,14 +35,19 @@ export class CesiumContainer extends React.Component {
 
   }
 
+  private _search(input: string) {
+    this.iCesium?.search(input);
+  }
+
   public handleClick() {
     // 使用原生的 DOM API 获取焦点
     // this.refs.myInput.focus();
-    console.log(this.refs, this.refs.myInput, ' // 使用原生的 DOM API 获取焦点');
+    // console.log(this.refs, this.refs.myInput, ' // 使用原生的 DOM API 获取焦点');
   }
 
   public render() {
     const style = { height: '100vh' };
+    const style2: React.CSSProperties = { position: 'relative', top: 0, left: 0, zIndex: 1 };
     return (
       <div
         id='cesiumContainer'
@@ -61,6 +66,18 @@ export class CesiumContainer extends React.Component {
           enterButton
         /> */}
         {/* {this.ref} */}
+        <div style={style2}>
+          <Search
+            placeholder='百度地图API搜索'
+            // ref='search'
+            onSearch={value => {
+              this._search(value);
+              // this.iCesium!.search(value);
+            }}
+            style={{ width: 512, position: 'fixed', top: 50, left: 300, zIndex: 1 }}
+            enterButton
+          />
+        </div>
       </div>
     );
   }
