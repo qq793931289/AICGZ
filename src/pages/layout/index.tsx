@@ -1,4 +1,5 @@
 import React from 'react';
+import * as iThree from 'ithree';
 import {
   BrowserRouter as Router, Route, Switch,
   // Link
@@ -27,7 +28,8 @@ import { IContact } from './main/contact/ui.comp';
 // import { CesiumContainer } from '../../cesium/ui.comp';
 // import { CesiumContainer } from '../../cesium/ui.comp';
 import { CesiumComponent } from '../../cesium/index';
-import ThreeContainer from '../../three/ui.comp';
+// import ThreeContainer from '../../three/ui.comp';
+// import { ThreeContainer } from 'ithree';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -117,7 +119,7 @@ export default class BaseLayout extends React.Component {
                 <Route path='/page1' component={Page1} />
 
                 <Route path='/cesium' component={CesiumComponent} />
-                <Route path='/three' component={ThreeContainer} />
+                <Route path='/three' component={iThree.ThreeContainer} />
 
                 <Route path='/menu' component={MenuM} />
                 <Route path='/contact' component={IContact} />
