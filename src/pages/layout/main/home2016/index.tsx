@@ -61,7 +61,7 @@ export class Home2016 extends React.Component {
         < Row justify="space-between" align="middle" style={{ height: '100vh' }}>
           {
             props.map((element, index) => (
-              <DemoCard element={element} />
+              <DemoCard element={element} key={index} />
             ))
           }
         </Row>

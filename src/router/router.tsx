@@ -95,8 +95,19 @@ import './index.scss';
 import { Row, Col } from 'antd';
 import BaseLayout from '../pages/layout';
 
+// export class getRouter {
 
-const getRouter = () => (
+//   public render() {
+//     return (
+//       <Router>
+//         <BaseLayout />
+//       </Router>
+//     )
+//   }
+// }
+
+
+export const getRouter = () => (
   <Router>
     <BaseLayout />
     {/* <>
@@ -120,7 +131,7 @@ const getRouter = () => (
   </Router>
 );
 
-export default getRouter;
+// export default getRouter;
 {/* <Route exact path='/' component={createComponent(Home)} />
               <Route path='/page1' component={createComponent(Page1)} /> */}
 {/* <Route path='/counter' component={createComponent(Counter)} />

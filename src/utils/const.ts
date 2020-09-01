@@ -8,16 +8,7 @@ export class Statement {
 
   public init() {
 
-    const LogStyle: string[] = [
-      '%c%s',
-      `
-      color: yellow;
-      background: green;
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: bold;
-      `,
-    ];
+
 
     const LogStyle2 =
       `
@@ -28,6 +19,10 @@ export class Statement {
       font-weight: bold;
       `
       ;
+    const LogStyle: string[] = [
+      '%c%s',
+      LogStyle2,
+    ];
 
     console.log(
       [
@@ -37,6 +32,7 @@ export class Statement {
         '%c 主页: www.aicgz.com',
         '%c CELL: 13725353558',
         '%c INFO: CANTON  CHINA 😊',
+        '%c ',
       ].join('\n').toString(),
       `
           ${LogStyle2}
@@ -46,7 +42,7 @@ export class Statement {
           background-size:300px 400px;
           `,
 
-      LogStyle2, LogStyle2, LogStyle2, LogStyle2, LogStyle2,
+      LogStyle2, LogStyle2, LogStyle2, LogStyle2, LogStyle2, LogStyle,
 
 
     );

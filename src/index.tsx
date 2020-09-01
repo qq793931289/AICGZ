@@ -11,7 +11,7 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 import './index.scss';
-import { message, Button } from 'antd';
+import { message } from 'antd';
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
@@ -72,7 +72,7 @@ import ReactDom from 'react-dom';
 // import ReactDom from 'react-dom';
 // import { AppContainer, setConfig } from 'react-hot-loader';
 
-import getRouter from './router/router';
+import { getRouter } from './router/router';
 import { BrowserUtil } from './utils/browserutil';
 import { HrefUtil } from './utils/debug';
 import { WEBGLUtil } from './utils/webgl';
@@ -110,6 +110,7 @@ ReactDom.render(
   //   {getRouter()}
   // </HashRouter >
   <div style={{ height: '100vh' }}>
+    {/* {<getRouter />} */}
     {getRouter()}
     {
       message.success('近期已更新：iCesium ')

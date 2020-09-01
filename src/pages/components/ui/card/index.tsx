@@ -56,7 +56,9 @@ export class ICard extends React.Component<ICardProps> {
           }
         }
       >
-        <Meta title={this._title} description={this._description} />
+        {
+          <Meta title={this._title} description={this._description} />
+        }
       </Card >
     );
   }

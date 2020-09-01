@@ -112,7 +112,7 @@ export default class BaseLayout extends React.Component {
                 {/* <Route exact path='/' component={IframeHome2016} /> */}
                 <Route path='/iframehome2016' component={IframeHome2016} />
 
-                {/* <Route exact path='/' component={Home2016} /> */}
+                <Route exact path='/' component={Home2016} />
                 <Route path='/home2016' component={Home2016} />
 
                 <Route path='/home' component={Home} />
