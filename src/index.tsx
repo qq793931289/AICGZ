@@ -1,3 +1,6 @@
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
+
 // import {
 //   Router as HashRouter, // 或者是HashRouter、MemoryRouter
 //   Route,   // 这是基本的路由块
