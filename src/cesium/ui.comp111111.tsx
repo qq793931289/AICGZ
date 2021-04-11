@@ -21,7 +21,8 @@ const { Search } = Input;
 // import { Link } from 'react-router-dom';
 // (Cesium as any).buildModuleUrl.setBaseUrl('https://cesium.com/downloads/cesiumjs/releases/1.72/Build/Cesium/Source');
 // (window as any).CESIUM_BASE_URL = 'https://cesium.com/downloads/cesiumjs/releases/1.72/Build/Cesium/';
-(window as any).CESIUM_BASE_URL = 'https://v-edu.org.cn/sre/file/map/cesium';
+// (window as any).CESIUM_BASE_URL = 'https://v-edu.org.cn/sre/file/map/cesium';
+// (window as any).CESIUM_BASE_URL = 'http://aicgz.com/map/cesium';
 
 
 

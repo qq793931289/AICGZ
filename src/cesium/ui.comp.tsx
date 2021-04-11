@@ -11,7 +11,7 @@ export interface CesiumContainerProps {
 
 export class CesiumContainer extends React.Component {
 
-  private iCesium?: iCesium.CesiumContainer;
+  private iCesium?:  iCesium.AddressLocationComponent;
   private _container?: HTMLDivElement | null;
   public myInput = React.createRef();
   public ref: any;
@@ -28,15 +28,19 @@ export class CesiumContainer extends React.Component {
   }
 
   public componentDidMount() {
-    this.iCesium = new iCesium.CesiumContainer({
-      id: 'cesiumContainer',
-    });
+
+    console.log('load  cesium dev ');
+     
+    this.iCesium = new iCesium.AddressLocationComponent({
+      // id: 'cesiumContainer',
+    }) ;
     // this.myInput = React.createRef();
 
+    console.log('load  cesium dev end ');
   }
 
   private _search(input: string) {
-    this.iCesium?.search(input);
+    // this.iCesium?.search(input);
   }
 
   public handleClick() {
@@ -68,16 +72,17 @@ export class CesiumContainer extends React.Component {
         {/* {this.ref} */}
         <div style={style2}>
           <Search
-            placeholder='百度地图API搜索'
+            placeholder='百度地图API搜索地理位置'
             // ref='search'
             onSearch={value => {
-              this._search(value);
-              // this.iCesium!.search(value);
+              // this._search(value);
+              this.iCesium!.search(value);
             }}
             style={{ width: 512, position: 'fixed', top: 50, left: 300, zIndex: 1 }}
             enterButton
           />
         </div>
+        {  console.log('load div end')  }
       </div>
     );
   }

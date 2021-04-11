@@ -9,7 +9,7 @@
     "axios-jsonp": "^1.0.4",
     "cesium": "^1.72.0",
     "dotenv": "^8.2.0",
-    "icesium": "latest",
+    "icesium": "^1.0.3",
     "ithree": "latest",
     "jsonp": "^0.2.1",
     "react": "^16.13.1",

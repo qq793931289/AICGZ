@@ -7,7 +7,7 @@ const { Search } = Input;
 
 export class CesiumComponent extends React.Component {
 
-  private iCesium?: iCesium.CesiumContainer;
+  private iCesium?:  iCesium.AddressLocationComponent;
   public _container?: HTMLDivElement | null;
 
   public componentDidMount() {
